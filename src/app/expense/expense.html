@@ -1,0 +1,19 @@
+<app-card>
+    <button [class.active]="isSelected" (click)="onSelectExpense()">
+        <div hidden>
+            {{ expense.id }}
+        </div>
+        <div>
+            {{ expense.title }}
+        </div>
+        <div>
+            {{ expense.amount }}
+        </div>
+        <div>
+            {{ expense.date | date: 'longDate'}}
+        </div>
+        <div>
+            {{ expense.note }}
+        </div>
+    </button>
+</app-card>
