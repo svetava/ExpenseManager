@@ -5,10 +5,3 @@ export interface Expense {
     date: string;
     note: string
 }
-
-export interface ExpenseFormData {
-    title: string;
-    date: string;
-    amount: number;
-    note: string;
-}

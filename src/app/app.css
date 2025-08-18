@@ -25,7 +25,6 @@ main {
 }
 
 button {
-  /*display: flex;*/
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 0.5rem;
@@ -35,11 +34,9 @@ button {
   font: inherit;
   cursor: pointer;
   width: 100%;
-  min-width: 10rem;
-  /*text-align: left;*/
 }
 #addExpenseButton {
-  max-width: 5rem;
+  max-width: 10rem;
 }
 
 button:hover,

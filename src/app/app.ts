@@ -15,11 +15,10 @@ import { ExpenseService } from './expense/expense.service';
 })
 
 export class App {
-  selectedExpenseId?: string;
   private expenseServise = inject(ExpenseService);
 
-  get selectedExpense() {
-    return this.expenseServise.getExpense(this.selectedExpenseId);
+  get selectedExpenseId() {
+    return this.expenseServise.getSelectedExpense().id;
   }
 
   get expenses(): Expense[] {
@@ -28,23 +27,19 @@ export class App {
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }
 
-  get expensesSum() {
-    return this.expenseServise.getExpensesSum();
+  get expensesMonthSum() {
+    return this.expenseServise.getExpensesMonthSum();
+  }
+
+  get expensesTotal() {
+    return this.expenseServise.getExpensesTotal();
   }
 
   get isAddingExpense() {
     return this.expenseServise.getIsAddingExpense();
   }
 
-  onSelectExpense(id: string) {
-    this.selectedExpenseId = id;
-  }
-
   onCliclAddExpense() {
     this.expenseServise.setIsAddingExpense(true);
-  }
-
-  onCancelButtonClick() {
-    this.expenseServise.setIsAddingExpense(false);
   }
 }

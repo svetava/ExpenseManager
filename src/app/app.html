@@ -1,24 +1,18 @@
 <app-header />
 <main>
     <app-card>
-        <div id="addExpenseButton"><button (click)="onCliclAddExpense()">Add expense</button></div>
+        <button id="addExpenseButton" addExpenseButton (click)="onCliclAddExpense()">Add expense</button>
     </app-card>
     <ul id="expenses">
         @for (expense of expenses; track expense.id) {
             <li>
-                <app-expense [expense]="expense" [isSelected]="expense.id === selectedExpenseId" (selectExpense)="onSelectExpense($event)" />
+                <app-expense [expense]="expense" [isSelected]="expense.id === selectedExpenseId" />
             </li>
         }
-        <li>
-            <p>Current month sum:   {{ expensesSum | currency:'EUR':'symbol':'1.2-2'}}</p>
-        </li>
+        <p>Current month sum:   {{ expensesMonthSum | currency:'EUR':'symbol':'1.2-2'}}</p>
+        <p>Total sum:   {{ expensesTotal | currency:'EUR':'symbol':'1.2-2'}}</p>
     </ul>
     @if(isAddingExpense) {
-        <app-expense-form (close)="onCancelButtonClick()" ></app-expense-form>
+        <app-expense-form></app-expense-form>
     }
-    <!--@if (selectedExpense) {
-        <app-expense-form [title]="selectedExpense.title"/>  
-    } @else {
-        <p id="fallback">Select an expense to see details!</p>
-    }-->
 </main>
