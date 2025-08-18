@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ExpenseFormData } from '../expense/expense.model';
+import { ExpenseService } from '../expense/expense.service';
 
 @Component({
   selector: 'app-expense-form',
@@ -10,8 +10,10 @@ import { ExpenseFormData } from '../expense/expense.model';
 })
 export class ExpenseFormComponent {
   /*@Input({ required: true }) title: string | undefined;*/
-  @Output() cancel = new EventEmitter<void>();
-  @Output() add = new EventEmitter<ExpenseFormData>();
+  @Output() close = new EventEmitter<void>();
+  // @Output() add = new EventEmitter<ExpenseFormData>();
+
+  private expenseServise = inject(ExpenseService);
 
   enteredTitle = '';
   enteredAmount = 0;
@@ -19,15 +21,16 @@ export class ExpenseFormComponent {
   enteredNote = '';
 
   onCancel() {
-    this.cancel.emit();
+    this.close.emit();
   }
 
   onSubmit() {
-    this.add.emit({
+    this.expenseServise.addExpense({
       title: this.enteredTitle,
       date: this.enteredDate,
       amount: this.enteredAmount,
       note: this.enteredNote
     })
+    this.close.emit();
   }
 }

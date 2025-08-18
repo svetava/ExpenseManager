@@ -2,7 +2,8 @@ main {
   width: 90%;
   max-width: 50rem;
   margin: 2.5rem auto;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   grid-auto-flow: row;
   gap: 2rem;
 }
@@ -24,7 +25,7 @@ main {
 }
 
 button {
-  display: flex;
+  /*display: flex;*/
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 0.5rem;
@@ -35,7 +36,10 @@ button {
   cursor: pointer;
   width: 100%;
   min-width: 10rem;
-  text-align: left;
+  /*text-align: left;*/
+}
+#addExpenseButton {
+  max-width: 5rem;
 }
 
 button:hover,

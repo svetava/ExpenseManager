@@ -1,19 +1,20 @@
 <app-card>
-    <button [class.active]="isSelected" (click)="onSelectExpense()">
+    <button [class.active]="isSelected" type="button" (click)="onSelectExpense()">
         <div hidden>
             {{ expense.id }}
+        </div>
+        <div>
+            {{ expense.date | date: 'mediumDate'}}
+        </div>
+        <div>
+            {{ expense.amount | currency:'EUR':'symbol':'1.2-2'}}
         </div>
         <div>
             {{ expense.title }}
         </div>
         <div>
-            {{ expense.amount }}
-        </div>
-        <div>
-            {{ expense.date | date: 'longDate'}}
-        </div>
-        <div>
             {{ expense.note }}
         </div>
     </button>
+    <button id="deleteExpenseButton" type="button" (click)="onDeleteButtonClick()">Delete</button>
 </app-card>

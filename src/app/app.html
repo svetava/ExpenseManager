@@ -1,7 +1,7 @@
 <app-header />
 <main>
     <app-card>
-        <button (click)="onCliclAddExpense()">Add expense</button>
+        <div id="addExpenseButton"><button (click)="onCliclAddExpense()">Add expense</button></div>
     </app-card>
     <ul id="expenses">
         @for (expense of expenses; track expense.id) {
@@ -9,9 +9,12 @@
                 <app-expense [expense]="expense" [isSelected]="expense.id === selectedExpenseId" (selectExpense)="onSelectExpense($event)" />
             </li>
         }
+        <li>
+            <p>Current month sum:   {{ expensesSum | currency:'EUR':'symbol':'1.2-2'}}</p>
+        </li>
     </ul>
     @if(isAddingExpense) {
-        <app-expense-form (cancel)="onCancelButtonClick()" (add)="onCreateNewExpense($event)"></app-expense-form>
+        <app-expense-form (close)="onCancelButtonClick()" ></app-expense-form>
     }
     <!--@if (selectedExpense) {
         <app-expense-form [title]="selectedExpense.title"/>  
