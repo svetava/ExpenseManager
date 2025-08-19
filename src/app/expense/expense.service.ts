@@ -5,7 +5,7 @@ import { Expense } from "./expense.model";
 export class ExpenseService {
     private expenses: Expense[] = [];
     private selectedExpense: Expense = {
-        id: '',
+        id: new Date().getTime().toString(),
         title: '',
         amount: 0,
         date: new Date().toDateString(),

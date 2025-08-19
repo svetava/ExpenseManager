@@ -1,54 +1,78 @@
-import { Component, EventEmitter, Output, inject, afterNextRender, viewChild } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { Component, EventEmitter, Output, inject, afterNextRender } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ExpenseService } from '../expense/expense.service';
+import { debounceTime } from 'rxjs';
+
+function mustBeGratterThenNull(control: AbstractControl) {
+  if (control.value > 0) return null;
+  return { notGreaterThanZero: true };
+}
 
 @Component({
   selector: 'app-expense-form',
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './expense-form.html',
   styleUrl: './expense-form.css'
 })
 
 export class ExpenseFormComponent {
   @Output() close = new EventEmitter<void>();
-  private form = viewChild.required<NgForm>('form');
   private expenseServise = inject(ExpenseService);
   private selectedExpense = this.expenseServise.getSelectedExpense();
-
   isEditMode = this.expenseServise.getIsEditMode();
+  isFormInvalid = false;
 
-  constructor() {
-    afterNextRender(() => {
-      if (this.isEditMode) {
-        setTimeout(() => {
-          this.form().setValue({
-            id: this.selectedExpense.id,
-            title: this.selectedExpense.title,
-            date: this.selectedExpense.date,
-            amount: this.selectedExpense.amount,
-            note: this.selectedExpense.note
-          })
-        }, 1);
-      }
-    });
+  form = new FormGroup({
+    id: new FormControl(new Date().getTime().toString(),),
+    title: new FormControl('', {
+      validators: [Validators.required]
+    }),
+    date: new FormControl('', {
+      validators: [Validators.required]
+    }),
+    amount: new FormControl(0, {
+      validators: [Validators.required, mustBeGratterThenNull]
+    }),
+    note: new FormControl(''),
+  });
+
+  get formIsInvalid() {
+    return this.form.controls.title.invalid;
   }
 
-  onSubmit(formData: NgForm) {
+  ngOnInit() {
+    if (this.isEditMode) {
+      this.form.setValue({
+        id: this.selectedExpense.id,
+        title: this.selectedExpense.title,
+        date: this.selectedExpense.date,
+        amount: this.selectedExpense.amount,
+        note: this.selectedExpense.note
+      })
+    }
+  }
+
+  onSubmit() {
+    if (this.form.controls.title.invalid || this.form.controls.date.invalid || this.form.controls.amount.invalid) {
+      this.isFormInvalid = true;
+      return;
+    }
+
     if (!this.isEditMode) {
       this.expenseServise.addExpense({
         id: new Date().getTime().toString(),
-        title: formData.form.value.title,
-        date: formData.form.value.date,
-        amount: formData.form.value.amount,
-        note: formData.form.value.note
+        title: this.form.value.title ?? "",
+        date: this.form.value.date ?? new Date().getTime().toString(),
+        amount: this.form.value.amount ?? 0,
+        note: this.form.value.note ?? ""
       })
     }
     else {
       let selectedExpense = this.expenseServise.getSelectedExpense();
-      selectedExpense.title = formData.form.value.title;
-      selectedExpense.date = formData.form.value.date;
-      selectedExpense.amount = formData.form.value.amount;
-      selectedExpense.note = formData.form.value.note;
+      selectedExpense.title = this.form.value.title ?? "";
+      selectedExpense.date = this.form.value.date ?? new Date().getTime().toString();
+      selectedExpense.amount = this.form.value.amount ?? 0;
+      selectedExpense.note = this.form.value.note ?? "";
     }
 
     this.expenseServise.setIsEditMode(false);
