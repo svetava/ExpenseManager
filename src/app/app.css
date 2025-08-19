@@ -24,19 +24,31 @@ main {
   text-align: center;
 }
 
+.flex {
+  display: flex;
+  gap: 3rem;
+}
+
+.flex-item:first-child {
+  width: 25%;
+}
+
 button {
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 0.5rem;
   background-color: #433352;
-  color: #c3b3d1;
+  color: #ffca99;
   border: none;
   font: inherit;
   cursor: pointer;
   width: 100%;
+  border-radius: 6px;
 }
+
 #addExpenseButton {
-  max-width: 10rem;
+  max-width: 7rem;
+  font-size: 14px;
 }
 
 button:hover,

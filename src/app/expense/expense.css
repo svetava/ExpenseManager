@@ -13,9 +13,35 @@ button {
   text-align: left;
 }
 
+.flex {
+  display: flex;
+  gap: 1rem;
+}
+
+.flex-item:first-child {
+  width: 0%;
+}
+
+.flex-item:nth-child(2)  {
+  width: 15%;
+}
+
+.flex-item:nth-child(3)  {
+  width: 15%;
+}
+
+.flex-item:nth-child(4)  {
+  width: 20%;
+}
+.flex-item:nth-child(5)  {
+  flex: 1;
+}
+
 #deleteExpenseButton {
   max-width: 5rem;
   min-width: 5rem;
+  color: #ffca99;
+  font-size: 14px;
 }
 
 button:hover,

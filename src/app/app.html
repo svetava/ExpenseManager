@@ -3,15 +3,26 @@
     <app-card>
         <button id="addExpenseButton" addExpenseButton (click)="onCliclAddExpense()">Add expense</button>
     </app-card>
+
     <ul id="expenses">
         @for (expense of expenses; track expense.id) {
             <li>
                 <app-expense [expense]="expense" [isSelected]="expense.id === selectedExpenseId" />
             </li>
-        }
-        <p>Current month sum:   {{ expensesMonthSum | currency:'EUR':'symbol':'1.2-2'}}</p>
-        <p>Total sum:   {{ expensesTotal | currency:'EUR':'symbol':'1.2-2'}}</p>
+        }    
     </ul>
+
+    <div>
+        <div class="flex">
+            <p class="flex-item">Current month sum:</p>
+            <p class="flex-item">{{ expensesMonthSum | currency:'EUR':'symbol':'1.2-2'}}</p>
+        </div>     
+        <div class="flex">
+            <p class="flex-item">Total sum:</p>
+            <p class="flex-item">{{ expensesTotal | currency:'EUR':'symbol':'1.2-2'}}</p>
+        </div>
+    </div>     
+
     @if(isAddingExpense) {
         <app-expense-form></app-expense-form>
     }

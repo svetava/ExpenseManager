@@ -38,13 +38,13 @@ export class ExpenseService {
 
     getExpensesMonthSum() {
         const now = new Date();
-        const currentMonth = now.getMonth();
-        const currentYear = now.getFullYear();
+        const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+        const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
 
         return this.expenses
             .filter(expense => {
                 const date = new Date(expense.date);
-                return date.getMonth() === currentMonth && date.getFullYear() === currentYear;
+                return date >= startOfMonth && date <= endOfMonth;
             })
             .reduce((sum, expense) => sum + expense.amount, 0);
     }
