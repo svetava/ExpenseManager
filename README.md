@@ -74,7 +74,7 @@ This will compile your project and store the build artifacts in the `dist/` dire
 ## Future improvments
 
 1. I decided to skip the back-end at this stage to focus on learning Angular and building a fully functional front-end first. 
-If I were to add the back-end, I would implement it using Java with Spring Framework, exposing RESTful APIs for CRUD operations on expenses (create, read, update, delete). The data would be stored in a relational database MySQL.
+If I were to add the back-end, I would implement it using Java with Spring Framework, exposing RESTful APIs for CRUD operations on expenses (create, read, update, delete). For storage, I would start with an in-memory structure like a List or Map. I would also enable CORS to allow the Angular frontend to consume the API using HttpClient and handle loading/error states.
 
 The Angular front-end would communicate with the back-end via HTTP requests handled in Angular services, ensuring a clean separation of concerns and scalability for future features.
 

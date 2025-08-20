@@ -22,7 +22,7 @@ export class ExpenseComponent {
     this.expenseServise.setIsAddingExpense(true);
   }
 
-  onDeleteButtonClick() {
+  onDeleteExpense() {
     this.expenseServise.removeExpense(this.expense.id);
   }
 }

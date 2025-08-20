@@ -1,7 +1,7 @@
 <app-header />
 <main>
     <app-card>
-        <button id="addExpenseButton" addExpenseButton (click)="onCliclAddExpense()">Add expense</button>
+        <button id="addExpenseButton" addExpenseButton (click)="onAddExpense()">Add expense</button>
     </app-card>
 
     <ul id="expenses">
@@ -15,7 +15,7 @@
     <div>
         <div class="flex">
             <p class="flex-item">Current month sum:</p>
-            <p class="flex-item">{{ expensesMonthSum | currency:'EUR':'symbol':'1.2-2'}}</p>
+            <p class="flex-item">{{ expensesMonthTotal | currency:'EUR':'symbol':'1.2-2'}}</p>
         </div>     
         <div class="flex">
             <p class="flex-item">Total sum:</p>

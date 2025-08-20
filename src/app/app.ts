@@ -27,8 +27,8 @@ export class App {
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }
 
-  get expensesMonthSum() {
-    return this.expenseServise.getExpensesMonthSum();
+  get expensesMonthTotal() {
+    return this.expenseServise.getExpensesMonthTotal();
   }
 
   get expensesTotal() {
@@ -39,7 +39,7 @@ export class App {
     return this.expenseServise.getIsAddingExpense();
   }
 
-  onCliclAddExpense() {
+  onAddExpense() {
     this.expenseServise.setIsAddingExpense(true);
   }
 }
