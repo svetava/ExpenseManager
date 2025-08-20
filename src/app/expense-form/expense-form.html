@@ -6,7 +6,7 @@
       <input type="text" id="id" name="id" hidden required [formControl]="form.controls.id"/>
     </p>
     <p>
-      <label for="date">Date</label>
+      <label class="flex" for="date">Date <div class="asterisk">*</div></label>
       <input type="date" id="date" name="date" [formControl]="form.controls.date"/>
        @if (form.controls.date.invalid && (form.controls.date.dirty || form.controls.date.touched) && form.controls.date.hasError('required')) {
             <div class="control-error">
@@ -15,7 +15,7 @@
        }
     </p>
     <p>
-      <label for="title">Title</label>
+      <label class="flex" for="title">Title <div class="asterisk">*</div></label>
       <input type="text" id="title" name="title" [formControl]="form.controls.title"/>
        @if (form.controls.title.invalid && (form.controls.title.dirty || form.controls.title.touched) && form.controls.title.hasError('required')) {
             <div class="control-error">
@@ -24,7 +24,7 @@
        }
     </p>
     <p>
-      <label for="amount">Amount</label>
+      <label class="flex" for="amount">Amount <div class="asterisk">*</div></label>
       <input type="number" id="amount" name="amount" min="0" [formControl]="form.controls.amount"/>
        @if (form.controls.amount.invalid && (form.controls.amount.dirty || form.controls.amount.touched)
             && (form.controls.amount.hasError('required') || form.controls.amount.hasError('notGreaterThanZero'))) {

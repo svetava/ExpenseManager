@@ -1,11 +1,26 @@
+# ExpenseManager
+
+A simple Angular application for expense management.
+Allows you to add, edit, delete, and view expenses, as well as see their monthly total and overall sum.
+
 # ExpenseManagerApp
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.6.
 
-## Development server
+## Installation and Running
 
-To start a local development server, run:
+1. Clone the repository:
+```bash
+git clone https://github.com/svetava/ExpenseManager.git
+cd ExpenseManager
+```
 
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the local development server:
 ```bash
 ng serve
 ```
@@ -36,26 +51,34 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
+## How to use the app
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+1. **Main page**
+![alt text](image.png)
 
-```bash
-ng test
-```
+2. To create a new expense, press the **"Add expense"** button. Then fill in all required fields in the form.
+![alt text](image-1.png)
 
-## Running end-to-end tests
+3.You can edit an expense by clicking on the expense row. An edit form will open.
 
-For end-to-end (e2e) testing, run:
+4. You can delete an expense by pressing the **"Delete"** button.
+![alt text](image-2.png)
 
-```bash
-ng e2e
-```
+5. All expenses are shown in date order (from newest to oldest). At the bottom of the main page, you can see your current month’s expense total and the overall total.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Future improvments
 
-## Additional Resources
+1. I decided to skip the back-end at this stage to focus on learning Angular and building a fully functional front-end first. 
+If I were to add the back-end, I would implement it using Java with Spring Framework, exposing RESTful APIs for CRUD operations on expenses (create, read, update, delete). The data would be stored in a relational database MySQL.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-# ExpenseManager
-Simple expense manager that lets a user log and review expenses
+The Angular front-end would communicate with the back-end via HTTP requests handled in Angular services, ensuring a clean separation of concerns and scalability for future features.
+
+2. A calendar picker will be added to the main form to allow choosing a period for displaying expenses and their total.
+
+3. A paginator will be added to the main form.
+
+4. The console error that appears when there are no expenses yet will be fixed (this error does not affect app functionality).
+
+5. The state update approach will be changed from relying on Zone.js & Angular’s change detection mechanism to a more modern and efficient approach using Signals.
+
+6. The @Output decorator will be replaced with the more modern output() function.
