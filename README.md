@@ -80,12 +80,14 @@ The Angular front-end would communicate with the back-end via HTTP requests hand
 
 2. A calendar picker will be added to the main form to allow choosing a period for displaying expenses and their total.
 
-3. A paginator will be added to the main form.
+3. A paginator will be added to the main page, along with the ability to sort expenses by title, date, or amount, and a search functionality.
 
 4. Expense category functionality will be added (to filter expenses by category).
 
-5. The console error that appears when there are no expenses yet will be fixed (this error does not affect app functionality).
+5. A user authentification will be added.
 
-6. The state update approach will be changed from relying on Zone.js & Angular’s change detection mechanism to a more modern and efficient approach using Signals.
+6. The console error that appears when there are no expenses yet will be fixed (this error does not affect app functionality).
 
-7. The @Output decorator will be replaced with the more modern output() function.
+7. The state update approach will be changed from relying on Zone.js & Angular’s change detection mechanism to a more modern and efficient approach using Signals.
+
+8. The @Output decorator will be replaced with the more modern output() function.
