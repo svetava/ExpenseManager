@@ -54,14 +54,19 @@ This will compile your project and store the build artifacts in the `dist/` dire
 ## How to use the app
 
 1. **Main page**
+
 ![alt text](image.png)
 
-2. To create a new expense, press the **"Add expense"** button. Then fill in all required fields in the form.
-![alt text](image-1.png)
+2. To create a new expense, press the **"Add expense"** button. Then fill in all required fields in the new expense form.
 
-3.You can edit an expense by clicking on the expense row. An edit form will open.
+![alt text](image-4.png)
+
+3. You can edit an expense by clicking on the expense row. An edit form will open.
+
+![alt text](image-3.png)
 
 4. You can delete an expense by pressing the **"Delete"** button.
+
 ![alt text](image-2.png)
 
 5. All expenses are shown in date order (from newest to oldest). At the bottom of the main page, you can see your current month’s expense total and the overall total.
@@ -77,8 +82,10 @@ The Angular front-end would communicate with the back-end via HTTP requests hand
 
 3. A paginator will be added to the main form.
 
-4. The console error that appears when there are no expenses yet will be fixed (this error does not affect app functionality).
+4. Expense category functionality will be added (to filter expenses by category).
 
-5. The state update approach will be changed from relying on Zone.js & Angular’s change detection mechanism to a more modern and efficient approach using Signals.
+5. The console error that appears when there are no expenses yet will be fixed (this error does not affect app functionality).
 
-6. The @Output decorator will be replaced with the more modern output() function.
+6. The state update approach will be changed from relying on Zone.js & Angular’s change detection mechanism to a more modern and efficient approach using Signals.
+
+7. The @Output decorator will be replaced with the more modern output() function.
